@@ -40,6 +40,27 @@ namespace AppointsmentsApi.Migrations
 
             modelBuilder.Entity("AppointsmentsApi.Models.Appointment", b =>
                 {
+                    b.OwnsOne("AppointsmentsApi.Models.Location", "Location", b1 =>
+                        {
+                            b1.Property<Guid>("AppointmentId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("Building")
+                                .IsRequired()
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("RoomNumber")
+                                .IsRequired()
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("AppointmentId");
+
+                            b1.ToTable("Appointments");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AppointmentId");
+                        });
+
                     b.OwnsOne("AppointsmentsApi.Models.TimeSlot", "Slot", b1 =>
                         {
                             b1.Property<Guid>("AppointmentId")
@@ -58,6 +79,9 @@ namespace AppointsmentsApi.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("AppointmentId");
                         });
+
+                    b.Navigation("Location")
+                        .IsRequired();
 
                     b.Navigation("Slot")
                         .IsRequired();

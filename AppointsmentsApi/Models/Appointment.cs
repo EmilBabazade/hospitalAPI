@@ -14,6 +14,7 @@ public class Appointment
     public Guid PatientId { get; set; }
     public Guid DoctorId { get; set; }
     public TimeSlot Slot { get; set; }
+    public Location Location {get;set;}
     public string Purpose { get; set; }
     
     public void Reschedule(TimeSlot newSlot)

@@ -1,4 +1,5 @@
 using AppointsmentsApi.Models.Data;
+using AppointsmentsApi.Services;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -6,6 +7,20 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<AppointmentContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString(
         "DefaultConnection")));
+// apiclients
+// Register PatientsApiClient
+builder.Services.AddHttpClient<PatientsApiClient>(client =>
+{
+    client.BaseAddress = new
+        Uri(builder.Configuration["ApiEndpoints:PatientsApi"]);
+});
+// Register DoctorsApiClient
+builder.Services.AddHttpClient<DoctorsApiClient>(client =>
+{
+    client.BaseAddress = new
+        Uri(builder.Configuration["ApiEndpoints:DoctorsApi"]);
+});
+
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
