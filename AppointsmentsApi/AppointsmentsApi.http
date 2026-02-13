@@ -1,11 +1,12 @@
 @AppointsmentsApi_HostAddress = http://localhost:5099
 
-# GET {{AppointsmentsApi_HostAddress}}/weatherforecast/
-# Accept: application/json
-
 ###
 # Retrieve all appointments
 GET {{AppointsmentsApi_HostAddress}}/api/appointments
+Accept: application/json
+###
+# Retrieve single appointment
+GET {{AppointsmentsApi_HostAddress}}/api/appointments/2a69f35e-017b-41ca-b1ed-f1df921ff5a9
 Accept: application/json
 ###
 # Create a new appointment

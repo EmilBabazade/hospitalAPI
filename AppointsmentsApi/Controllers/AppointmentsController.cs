@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using AppointsmentsApi.Models;
 using AppointsmentsApi.Models.Data;
 using AppointsmentsApi.Services;
+using Grpc.Net.Client;
+using AppointsmentsApi.Protos;
 
 namespace AppointsmentsApi.Controllers
 {
@@ -18,13 +20,15 @@ namespace AppointsmentsApi.Controllers
         private readonly AppointmentContext _context;
         private readonly PatientsApiClient _patientsApiClient;
         private readonly DoctorsApiClient _doctorsApiClient;
+        private readonly IConfiguration _config;
 
         public AppointmentsController(AppointmentContext context, PatientsApiClient patientsApiClient, 
-            DoctorsApiClient doctorsApiClient)
+            DoctorsApiClient doctorsApiClient, IConfiguration config)
         {
             _context = context;
             _patientsApiClient = patientsApiClient;
             _doctorsApiClient = doctorsApiClient;
+            _config = config;
         }
 
         // GET: api/Appointments
@@ -36,7 +40,7 @@ namespace AppointsmentsApi.Controllers
 
         // GET: api/Appointments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Appointment>> GetAppointment(Guid id)
+        public async Task<ActionResult<AppointmentDetailsDTO>> GetAppointment(Guid id, CancellationToken cancellationToken)
         {
             var appointment = await _context.Appointments.FindAsync(id);
 
@@ -45,28 +49,12 @@ namespace AppointsmentsApi.Controllers
                 return NotFound();
             }
 
-            return appointment;
-
-            // var appointment = await _context.Appointments.FindAsync(id);
-            // if (appointment == null)
-            // {
-            //     return NotFound();
-            // }
-            // // Use the clients to fetch patient and doctor details
-            // var patient = await _patientsApiClient.GetPatientAsync(id);
-            // var doctor = await _doctorsApiClient.GetDoctorAsync(id);
-            // // Combine data and return response
-            // AppointmentDetails appointmentDetails = new AppointmentDetails(
-           
-            //     id,
-            //     patient,
-            //     doctor,
-            //     appointment.Slot.Start,
-            //     appointment.Slot.End,
-            //     appointment.Location.RoomNumber,
-            //     appointment.Location.Building
-            // );
-            // return Ok(appointmentDetails);
+            // get documents
+            using var channel = GrpcChannel.ForAddress(_config["GrpcEndpoints:DocumentService"]);
+            var client = new DocumentSearch.DocumentSearchClient(channel);
+            var documents = await client.GetAllAsync(new PatientId {Id = appointment.PatientId.ToString()}, cancellationToken: cancellationToken);
+            
+            return new AppointmentDetailsDTO(appointment, documents);
         }
 
         // PUT: api/Appointments/5

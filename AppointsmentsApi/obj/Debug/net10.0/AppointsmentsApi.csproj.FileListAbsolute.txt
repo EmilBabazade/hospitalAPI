@@ -263,3 +263,7 @@ C:\Users\emba\microservices\hospitalAPI\AppointsmentsApi\bin\Debug\net10.0\tr\Mi
 C:\Users\emba\microservices\hospitalAPI\AppointsmentsApi\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\emba\microservices\hospitalAPI\AppointsmentsApi\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\emba\microservices\hospitalAPI\AppointsmentsApi\obj\Debug\net10.0\AppointsmentsApi.sourcelink.json
+C:\Users\emba\microservices\hospitalAPI\AppointsmentsApi\bin\Debug\net10.0\Google.Protobuf.dll
+C:\Users\emba\microservices\hospitalAPI\AppointsmentsApi\bin\Debug\net10.0\Grpc.Core.Api.dll
+C:\Users\emba\microservices\hospitalAPI\AppointsmentsApi\bin\Debug\net10.0\Grpc.Net.Client.dll
+C:\Users\emba\microservices\hospitalAPI\AppointsmentsApi\bin\Debug\net10.0\Grpc.Net.Common.dll
