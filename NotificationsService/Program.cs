@@ -15,6 +15,7 @@ builder.Services.AddMassTransit(opts =>
         cfg.ReceiveEndpoint("appointment_created_queue", e =>
         {
             e.ConfigureConsumer<AppointmnetCreatedConsumer>(context);
+            e.UseConcurrencyLimit(1);
         });
     });
 });

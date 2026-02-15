@@ -95,14 +95,12 @@ namespace AppointsmentsApi.Controllers
             _context.Appointments.Add(appointment);
             await _context.SaveChangesAsync();
 
-            var msg = new AppointmentCreated
-            {
-                AppointmentDate = appointment.Slot.Start,
-                AppointmentId = appointment.AppointmentId,
-                DoctorId = appointment.DoctorId,
-                PatientId = appointment.PatientId
-            };
+            var msg = new AppointmentCreatedMessage(appointment.AppointmentId, appointment.PatientId, appointment.DoctorId, appointment.Slot.Start);
             await _publishEndpoint.Publish(msg);
+            if (Random.Shared.Next() % 2 == 0)
+            {
+                await _publishEndpoint.Publish(msg); // simulate duplicate messages
+            }
             Console.WriteLine($"Sent:\n {msg}");
 
             return CreatedAtAction("GetAppointment", new { id = appointment.AppointmentId }, appointment);

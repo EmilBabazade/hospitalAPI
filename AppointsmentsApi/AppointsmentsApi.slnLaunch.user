@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "NotificationService",
+    "Projects": [
+      {
+        "Path": "AppointsmentsApi.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\NotificationsService\\NotificationsService.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
