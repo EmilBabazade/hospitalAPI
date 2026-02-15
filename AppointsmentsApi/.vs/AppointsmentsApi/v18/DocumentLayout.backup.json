@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\AppointsmentsApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{68F34FAC-526C-48D3-BE83-342FDF575B70}|..\\NotificationsService\\NotificationsService.csproj|c:\\users\\emil\\source\\repos\\emilbabazade\\hospitalapi\\notificationsservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{68F34FAC-526C-48D3-BE83-342FDF575B70}|..\\NotificationsService\\NotificationsService.csproj|c:\\users\\emil\\source\\repos\\emilbabazade\\hospitalapi\\notificationsservice\\messageconsumers\\appointmnetcreatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92C92D22-FD49-7075-B31F-D2A5B9B6B210}|AppointsmentsApi.csproj|c:\\users\\emil\\source\\repos\\emilbabazade\\hospitalapi\\appointsmentsapi\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92C92D22-FD49-7075-B31F-D2A5B9B6B210}|AppointsmentsApi.csproj|solutionrelative:controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5302FFB2-529E-46BB-AD47-544AC8473FBB}|..\\Messages\\Messages.csproj|c:\\users\\emil\\source\\repos\\emilbabazade\\hospitalapi\\messages\\appointmentcreated.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92C92D22-FD49-7075-B31F-D2A5B9B6B210}|AppointsmentsApi.csproj|c:\\users\\emil\\source\\repos\\emilbabazade\\hospitalapi\\appointsmentsapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92C92D22-FD49-7075-B31F-D2A5B9B6B210}|AppointsmentsApi.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppointmentsController.cs",
+              "DocumentMoniker": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\AppointsmentsApi\\Controllers\\AppointmentsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AppointmentsController.cs",
+              "ToolTip": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\AppointsmentsApi\\Controllers\\AppointmentsController.cs",
+              "RelativeToolTip": "Controllers\\AppointmentsController.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAkwGkAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T02:58:28.622Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppointmnetCreatedConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\NotificationsService\\MessageConsumers\\AppointmnetCreatedConsumer.cs",
+              "RelativeDocumentMoniker": "..\\NotificationsService\\MessageConsumers\\AppointmnetCreatedConsumer.cs",
+              "ToolTip": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\NotificationsService\\MessageConsumers\\AppointmnetCreatedConsumer.cs",
+              "RelativeToolTip": "..\\NotificationsService\\MessageConsumers\\AppointmnetCreatedConsumer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T03:16:30.691Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\NotificationsService\\Program.cs",
+              "RelativeDocumentMoniker": "..\\NotificationsService\\Program.cs",
+              "ToolTip": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\NotificationsService\\Program.cs",
+              "RelativeToolTip": "..\\NotificationsService\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T03:21:52.494Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AppointmentCreated.cs",
+              "DocumentMoniker": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\Messages\\AppointmentCreated.cs",
+              "RelativeDocumentMoniker": "..\\Messages\\AppointmentCreated.cs",
+              "ToolTip": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\Messages\\AppointmentCreated.cs",
+              "RelativeToolTip": "..\\Messages\\AppointmentCreated.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T03:19:36.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\AppointsmentsApi\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\AppointsmentsApi\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T02:58:38.234Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
