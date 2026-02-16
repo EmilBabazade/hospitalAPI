@@ -1,0 +1,6 @@
+@PatientsApi_HostAddress = http://localhost:5191
+
+
+### Get all patients
+GET {{PatientsApi_HostAddress}}/
+Accept: application/json

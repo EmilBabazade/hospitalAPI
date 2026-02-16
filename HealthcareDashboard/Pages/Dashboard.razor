@@ -1,0 +1,45 @@
+@page "/dashboard/{PatientId:Guid}"
+@using HealthcareDashboard.Services
+@inject PatientServiceClient PatientService
+@* Other services to inject *@
+<h3>Patient Dashboard</h3>
+@if (isLoading)
+{
+    <p>Loading data...</p>
+}
+else
+{
+    <div>
+        <h4>Patient Full Name</h4>
+        <p>@patient?.FirstName @patient?.LastName</p>
+        <h4>Patient Profile</h4>
+        <p><strong>Gender:</strong> @patient?.Gender</p>
+        <p><strong>Email:</strong> @patient?.Email</p>
+        <p><strong>Contact:</strong> @patient?.ContactNumber</p>
+        @* Additional profile details *@
+    </div>
+}
+@code {
+    [Parameter]
+    public string PatientId { get; set; }
+    private Patient? patient;
+    @* Additional properties *@
+    private bool isLoading = true;
+    protected override async Task OnParametersSetAsync()
+    {
+        try
+        {
+            isLoading = true;
+            patient = await PatientService.GetPatientAsync(PatientId);
+            @* More synchronous service calls via service clients *@
+        }
+        catch (Exception ex)
+        {
+            throw;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
