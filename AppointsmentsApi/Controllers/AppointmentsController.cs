@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AppointsmentsApi.Models;
@@ -10,6 +5,8 @@ using AppointsmentsApi.Models.Data;
 using AppointsmentsApi.Services;
 using Grpc.Net.Client;
 using AppointsmentsApi.Protos;
+using MassTransit;
+using Messages;
 
 namespace AppointsmentsApi.Controllers
 {
@@ -21,14 +18,16 @@ namespace AppointsmentsApi.Controllers
         private readonly PatientsApiClient _patientsApiClient;
         private readonly DoctorsApiClient _doctorsApiClient;
         private readonly IConfiguration _config;
+        private readonly IPublishEndpoint _publishEndpoint;
 
         public AppointmentsController(AppointmentContext context, PatientsApiClient patientsApiClient, 
-            DoctorsApiClient doctorsApiClient, IConfiguration config)
+            DoctorsApiClient doctorsApiClient, IConfiguration config, IPublishEndpoint publishEndpoint)
         {
             _context = context;
             _patientsApiClient = patientsApiClient;
             _doctorsApiClient = doctorsApiClient;
             _config = config;
+            _publishEndpoint = publishEndpoint;
         }
 
         // GET: api/Appointments
@@ -95,6 +94,14 @@ namespace AppointsmentsApi.Controllers
         {
             _context.Appointments.Add(appointment);
             await _context.SaveChangesAsync();
+
+            var msg = new AppointmentCreatedMessage(appointment.AppointmentId, appointment.PatientId, appointment.DoctorId, appointment.Slot.Start);
+            await _publishEndpoint.Publish(msg);
+            if (Random.Shared.Next() % 2 == 0)
+            {
+                await _publishEndpoint.Publish(msg); // simulate duplicate messages
+            }
+            Console.WriteLine($"Sent:\n {msg}");
 
             return CreatedAtAction("GetAppointment", new { id = appointment.AppointmentId }, appointment);
         }

@@ -1,8 +1,14 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.2.0
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointsmentsApi", "AppointsmentsApi.csproj", "{92C92D22-FD49-7075-B31F-D2A5B9B6B210}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentsService", "..\DocumentsService\DocumentsService.csproj", "{8FD8BAC5-37C5-DA2B-F261-7599F4E28025}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "..\Messages\Messages.csproj", "{5302FFB2-529E-46BB-AD47-544AC8473FBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsService", "..\NotificationsService\NotificationsService.csproj", "{68F34FAC-526C-48D3-BE83-342FDF575B70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,6 +20,18 @@ Global
 		{92C92D22-FD49-7075-B31F-D2A5B9B6B210}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92C92D22-FD49-7075-B31F-D2A5B9B6B210}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92C92D22-FD49-7075-B31F-D2A5B9B6B210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FD8BAC5-37C5-DA2B-F261-7599F4E28025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD8BAC5-37C5-DA2B-F261-7599F4E28025}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FD8BAC5-37C5-DA2B-F261-7599F4E28025}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FD8BAC5-37C5-DA2B-F261-7599F4E28025}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5302FFB2-529E-46BB-AD47-544AC8473FBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5302FFB2-529E-46BB-AD47-544AC8473FBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5302FFB2-529E-46BB-AD47-544AC8473FBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5302FFB2-529E-46BB-AD47-544AC8473FBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68F34FAC-526C-48D3-BE83-342FDF575B70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68F34FAC-526C-48D3-BE83-342FDF575B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68F34FAC-526C-48D3-BE83-342FDF575B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68F34FAC-526C-48D3-BE83-342FDF575B70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
