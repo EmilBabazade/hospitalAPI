@@ -9,6 +9,10 @@
       {
         "Path": "..\\NotificationsService\\NotificationsService.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "..\\DocumentsService\\DocumentsService.csproj",
+        "Action": "Start"
       }
     ]
   }

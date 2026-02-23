@@ -28,8 +28,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "appointment",
-        "Type": "AppointsmentsApi.Models.Appointment",
+        "Name": "createAppointmentCommand",
+        "Type": "AppointsmentsApi.Commands.CreateAppointment.CreateAppointmentCommand",
         "IsRequired": true
       }
     ],
@@ -55,7 +55,7 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Guid",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -107,5 +107,31 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AppointsmentsApi.Controllers.AppointmentsController",
+    "Method": "GetAppointmentsByPatientId",
+    "RelativePath": "api/Appointments/GetAppointmentsByPatientId/{patientId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[AppointsmentsApi.Controllers.AppointmentsController\u002BAppointmentByPatientId, AppointsmentsApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

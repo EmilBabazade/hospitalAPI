@@ -7,53 +7,50 @@ using Grpc.Net.Client;
 using AppointsmentsApi.Protos;
 using MassTransit;
 using Messages;
+using MediatR;
+using AppointsmentsApi.Commands.CreateAppointment;
+using AppointsmentsApi.Commands.GetAppointmentById;
+using AppointsmentsApi.Commands.GetAppointments;
 
 namespace AppointsmentsApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AppointmentsController : ControllerBase
+    public class AppointmentsController(
+        AppointmentContext context, 
+        PatientsApiClient patientsApiClient,
+        DoctorsApiClient doctorsApiClient, 
+        IConfiguration config, 
+        IPublishEndpoint publishEndpoint,
+        IMediator mediator
+        ) : ControllerBase
     {
-        private readonly AppointmentContext _context;
-        private readonly PatientsApiClient _patientsApiClient;
-        private readonly DoctorsApiClient _doctorsApiClient;
-        private readonly IConfiguration _config;
-        private readonly IPublishEndpoint _publishEndpoint;
-
-        public AppointmentsController(AppointmentContext context, PatientsApiClient patientsApiClient, 
-            DoctorsApiClient doctorsApiClient, IConfiguration config, IPublishEndpoint publishEndpoint)
-        {
-            _context = context;
-            _patientsApiClient = patientsApiClient;
-            _doctorsApiClient = doctorsApiClient;
-            _config = config;
-            _publishEndpoint = publishEndpoint;
-        }
+        private readonly AppointmentContext _context = context;
+        private readonly PatientsApiClient _patientsApiClient = patientsApiClient;
+        private readonly DoctorsApiClient _doctorsApiClient = doctorsApiClient;
+        private readonly IConfiguration _config = config;
+        private readonly IPublishEndpoint _publishEndpoint = publishEndpoint;
+        private readonly IMediator _mediator = mediator;
 
         // GET: api/Appointments
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointments()
         {
-            return await _context.Appointments.ToListAsync();
+            return await _mediator.Send(new GetAppointmentsQuery());
         }
 
         // GET: api/Appointments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AppointmentDetailsDTO>> GetAppointment(Guid id, CancellationToken cancellationToken)
+        public async Task<ActionResult<AppointmentDetailsDTO>> GetAppointment(string id, CancellationToken cancellationToken)
         {
-            var appointment = await _context.Appointments.FindAsync(id);
+            var apppointment = await _mediator.Send(new GetAppointmentByIdQuery(id), cancellationToken);
 
-            if (appointment == null)
+            if (apppointment == null)
             {
                 return NotFound();
             }
-
-            // get documents
-            using var channel = GrpcChannel.ForAddress(_config["GrpcEndpoints:DocumentService"]);
-            var client = new DocumentSearch.DocumentSearchClient(channel);
-            var documents = await client.GetAllAsync(new PatientId {Id = appointment.PatientId.ToString()}, cancellationToken: cancellationToken);
             
-            return new AppointmentDetailsDTO(appointment, documents);
+            return apppointment;
         }
 
         // PUT: api/Appointments/5
@@ -90,18 +87,9 @@ namespace AppointsmentsApi.Controllers
         // POST: api/Appointments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Appointment>> PostAppointment(Appointment appointment)
+        public async Task<ActionResult<Appointment>> PostAppointment(CreateAppointmentCommand createAppointmentCommand)
         {
-            _context.Appointments.Add(appointment);
-            await _context.SaveChangesAsync();
-
-            var msg = new AppointmentCreatedMessage(appointment.AppointmentId, appointment.PatientId, appointment.DoctorId, appointment.Slot.Start);
-            await _publishEndpoint.Publish(msg);
-            if (Random.Shared.Next() % 2 == 0)
-            {
-                await _publishEndpoint.Publish(msg); // simulate duplicate messages
-            }
-            Console.WriteLine($"Sent:\n {msg}");
+            var appointment = await _mediator.Send(createAppointmentCommand);
 
             return CreatedAtAction("GetAppointment", new { id = appointment.AppointmentId }, appointment);
         }
@@ -125,6 +113,35 @@ namespace AppointsmentsApi.Controllers
         private bool AppointmentExists(Guid id)
         {
             return _context.Appointments.Any(e => e.AppointmentId == id);
+        }
+
+        [HttpGet("GetAppointmentsByPatientId/{patientId}")]
+        public async Task<ActionResult<IEnumerable<AppointmentByPatientId>>>
+        GetAppointmentsByPatientId(Guid patientId)
+        {
+            // Get appointments for a patient
+            var appointments = await _context.Appointments.Where(a =>
+                a.PatientId == patientId)
+            .Select(q => new AppointmentByPatientId(q.AppointmentId,
+                string.Empty, q.Slot.Start))
+            .ToListAsync();
+            // Get doctor details for each appointment in parallel
+            var tasks = appointments.Select(async appointment =>
+            {
+                var doctor = await _doctorsApiClient
+                    .GetDoctorAsync(appointment.AppointmentId);
+                appointment.DoctorName = doctor.LastName;
+            });
+            await Task.WhenAll(tasks); 
+            return appointments;
+        }
+        // New DTO for this operation
+        public class AppointmentByPatientId(Guid appointmentId,
+            string doctorName, DateTime date)
+        {
+            public Guid AppointmentId { get; set; } = appointmentId;
+            public string DoctorName { get; set; } = doctorName;
+            public DateTime Date { get; set; } = date;
         }
     }
 }

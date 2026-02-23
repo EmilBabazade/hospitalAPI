@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "hUgTYwWv+fE=",
+  "dgSpecHash": "lRYCWLr27tk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\emba\\microservices\\hospitalAPI\\PatientsApi\\PatientsApi.csproj",
+  "projectFilePath": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\PatientsApi\\PatientsApi.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\emba\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.0\\microsoft.aspnetcore.openapi.10.0.0.nupkg.sha512",
-    "C:\\Users\\emba\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+    "C:\\Users\\Emil\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.0\\microsoft.aspnetcore.openapi.10.0.0.nupkg.sha512",
+    "C:\\Users\\Emil\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
   ],
   "logs": []
 }

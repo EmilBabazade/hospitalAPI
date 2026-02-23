@@ -2,6 +2,7 @@ using AppointsmentsApi.Models.Data;
 using AppointsmentsApi.Services;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
@@ -23,6 +24,8 @@ builder.Services.AddHttpClient<DoctorsApiClient>(client =>
 });
 // rabbitmq
 builder.Services.AddMassTransit(opts => opts.UsingRabbitMq());
+// mediatr
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

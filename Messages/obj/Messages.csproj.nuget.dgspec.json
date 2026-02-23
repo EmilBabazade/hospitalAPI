@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\emba\\microservices\\hospitalAPI\\Messages\\Messages.csproj": {}
+    "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\Messages\\Messages.csproj": {}
   },
   "projects": {
-    "C:\\Users\\emba\\microservices\\hospitalAPI\\Messages\\Messages.csproj": {
+    "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\Messages\\Messages.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\emba\\microservices\\hospitalAPI\\Messages\\Messages.csproj",
+        "projectUniqueName": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\Messages\\Messages.csproj",
         "projectName": "Messages",
-        "projectPath": "C:\\Users\\emba\\microservices\\hospitalAPI\\Messages\\Messages.csproj",
-        "packagesPath": "C:\\Users\\emba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\emba\\microservices\\hospitalAPI\\Messages\\obj\\",
+        "projectPath": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\Messages\\Messages.csproj",
+        "packagesPath": "C:\\Users\\Emil\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Emil\\source\\repos\\EmilBabazade\\hospitalAPI\\Messages\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\emba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Emil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -66,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -43,6 +43,12 @@ app.MapGet("/", () =>
 })
 .WithName("GetPatients");
 
+app.MapGet("/patients/{id:string}", (string id) =>
+{
+    return Patient.NewRandomPatient(id);
+})
+.WithName("GetPatientById");
+
 app.Run();
 public record Patient(
     Guid PatientId,
