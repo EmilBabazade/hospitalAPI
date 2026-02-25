@@ -9,6 +9,9 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<AppointmentContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString(
         "DefaultConnection")));
+builder.Services.AddDbContext<EventStoreDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString(
+        "EventStoreDatabase")));
 // apiclients
 // Register PatientsApiClient
 builder.Services.AddHttpClient<PatientsApiClient>(client =>
